@@ -2,16 +2,18 @@
 {% block body %}
 <div>
 
-  <h2>Add A New Member</h2>
+  <h3>{{ legend }}</h3>
 
-  <form method="POST" action="{{ url_for('add_member')}}">
+  <form method="POST" action="">
 
     {{ form.csrf_token }}
+    {{ form.member_id.label }} {{ form.member_id(size=5, readonly=true)}}
     {{ form.first_name.label }} {{ form.first_name(size=20) }}
     {{ form.last_name.label }} {{ form.last_name(size=20) }}
     {{ form.uniform_number.label }} {{ form.uniform_number(size=20) }}
     {{ form.homecountry.label }} {{ form.homecountry(size=20) }}
-    <input type="submit" value="Add member">
+
+    <input type="submit" value="Save">
 
   </form>
 

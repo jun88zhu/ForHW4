@@ -1,9 +1,10 @@
 from flask import Flask
-from flask import render_template,redirect,request
+from flask import render_template,redirect,request,flash,url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField,SubmitField,IntegerField
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 import pymysql
 import secrets
 
@@ -27,6 +28,7 @@ class jzhu72(db.Model):
 
 
 class MemberForm(FlaskForm):
+    member_id = IntegerField('Friend ID')
     first_name = StringField('First Name:', validators=[DataRequired()])
     last_name = StringField('Last Name:', validators=[DataRequired()])
     uniform_number = StringField('Uniform Number:', validators=[DataRequired()])
@@ -37,6 +39,25 @@ class MemberForm(FlaskForm):
 def index():
     all_members = jzhu72.query.all()
     return render_template('index.html', members=all_members,pageTitle='lakers team member')
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        form = request.form
+        search_value = form['search_string']
+        search = "%{0}%".format(search_value)
+        results = jzhu72.query.filter(or_(jzhu72.first_name.like(search),jzhu72.last_name.like(search),jzhu72.uniform_number.like(search),jzhu72.homecountry.like(search))).all()
+        return render_template('index.html', members=results, pageTitle='lakers team member', legend="Search Results")
+    else:
+        return redirect('/')
+
+
+
+
+
+
+
+
 
 @app.route('/add_member', methods=['GET','POST'])
 def add_member():
@@ -57,6 +78,32 @@ def delete_member(member_id):
         return redirect("/")
     else:
         return redirect("/")
+
+@app.route('/member/<int:member_id>', methods=['GET','POST'])
+def get_member(member_id):
+    member = jzhu72.query.get_or_404(member_id)
+    return render_template('member.html', form=member, pageTitle='Member Details', legend="Member Details")
+
+@app.route('/member/<int:member_id>/update', methods=['GET','POST'])
+def update_member(member_id):
+    member = jzhu72.query.get_or_404(member_id)
+    form = MemberForm()
+
+    if form.validate_on_submit():
+        member.first_name = form.first_name.data
+        member.last_name = form.last_name.data
+        member.uniform_number=form.uniform_number.data
+        member.homecountry=form.homecountry.data
+        db.session.commit()
+        return redirect(url_for('get_member', member_id=member.member_id))
+
+    form.member_id.data = member.member_id
+    form.first_name.data = member.first_name
+    form.last_name.data = member.last_name
+    form.uniform_number.data = member.uniform_number
+    form.homecountry.data = member.homecountry
+    return render_template('update_member.html', form=form, pageTitle='Update Member', legend="Update A Member")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
