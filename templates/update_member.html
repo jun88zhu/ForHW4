@@ -5,15 +5,26 @@
   <h3>{{ legend }}</h3>
 
   <form method="POST" action="">
-
-    {{ form.csrf_token }}
-    {{ form.member_id.label }} {{ form.member_id(size=5, readonly=true)}}
-    {{ form.first_name.label }} {{ form.first_name(size=20) }}
-    {{ form.last_name.label }} {{ form.last_name(size=20) }}
-    {{ form.uniform_number.label }} {{ form.uniform_number(size=20) }}
-    {{ form.homecountry.label }} {{ form.homecountry(size=20) }}
-
-    <input type="submit" value="Save">
+    <table  class="table table-striped table-dark"
+      <thead>
+          <tr>
+            <th scope="col">{{ form.csrf_token }}</th>
+            <th scope="col">{{ form.first_name.label }} </th>
+            <th scope="col">{{ form.last_name.label }} </th>
+            <th scope="col">{{ form.uniform_number.label }} </th>
+            <th scope="col">{{ form.homecountry.label }} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td>{{ form.first_name(size=20) }}</td>
+          <td>{{ form.last_name(size=20) }}</td>
+          <td>{{ form.uniform_number(size=20) }}</td>
+          <td>{{ form.homecountry(size=20) }}</td>
+          <th>
+            <button type="submit" class="btn btn-warning">Save</button>
+          </th>
 
   </form>
 

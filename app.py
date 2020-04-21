@@ -58,7 +58,6 @@ def search():
 
 
 
-
 @app.route('/add_member', methods=['GET','POST'])
 def add_member():
     form = MemberForm()
