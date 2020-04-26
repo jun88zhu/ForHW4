@@ -28,7 +28,7 @@ class jzhu72(db.Model):
 
 
 class MemberForm(FlaskForm):
-    member_id = IntegerField('Friend ID')
+    member_id = IntegerField('Member ID')
     first_name = StringField('First Name:', validators=[DataRequired()])
     last_name = StringField('Last Name:', validators=[DataRequired()])
     uniform_number = StringField('Uniform Number:', validators=[DataRequired()])
