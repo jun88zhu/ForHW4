@@ -8,20 +8,30 @@
     <table  class="table table-striped table-dark"
       <thead>
           <tr>
+            <th scope="col">{{ form.HawkID.label }} </th>
             <th scope="col">{{ form.csrf_token }}</th>
             <th scope="col">{{ form.first_name.label }} </th>
             <th scope="col">{{ form.last_name.label }} </th>
-            <th scope="col">{{ form.uniform_number.label }} </th>
-            <th scope="col">{{ form.homecountry.label }} </th>
+            <th scope="col">{{ form.Temperature .label }} </th>
+            <th scope="col">{{ form.FeelingGood.label }} </th>
+            <th scope="col">{{ form.ReportDate.label }} </th>
+            <th scope="col">{{ form.NeedHelp.label }} </th>
+            <th scope="col">{{ form.ContactSickPeople.label }} </th>
+
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row"></th>
+          <td>{{ form.HawkID(size=20) }}</td>
           <td>{{ form.first_name(size=20) }}</td>
           <td>{{ form.last_name(size=20) }}</td>
-          <td>{{ form.uniform_number(size=20) }}</td>
-          <td>{{ form.homecountry(size=20) }}</td>
+          <td>{{ form.Temperature (size=20) }}</td>
+          <td>{{ form.FeelingGood(size=20) }}</td>
+          <td>{{ form.ReportDate(size=20) }}</td>
+          <td>{{ form.NeedHelp(size=20) }}</td>
+          <td>{{ form.ContactSickPeople(size=20) }}</td>
+
           <th>
             <button type="submit" class="btn btn-warning">Save</button>
           </th>
