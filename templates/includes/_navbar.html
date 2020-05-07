@@ -1,0 +1,68 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <img src="{{ url_for('static', filename='images/ICON.jpg') }}" width="50"="/>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+
+            <h2 style="color:Gold;"><a href="/" title="Home page" class="active">The Daily Reports</a></h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                    <h3 style="color:rgb(255,215,0);"><a class="nav-link" href="/about">About</a></h3>
+                  </li>
+                </ul>
+
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                {% if current_user.is_anonymous%}
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                {% else %}
+
+                {% if current_user.is_admin() %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/control_panel">Control Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/databasemanipulation">Database Manipulation</a>
+                </li>
+                {% endif %}
+
+                {% if current_user.is_admin() or current_user.is_user() %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/databaseoverview">Database Overview</a>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/account">Account</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+
+
+                {% endif %}
+            </ul>
+        </div>
+
+    </nav>
+</div>

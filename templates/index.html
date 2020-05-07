@@ -1,43 +1,20 @@
+
+
 {% extends 'base.html' %}
 
 {% block body %}
 
-<h3>{{ legend }}</h3>
-{% if members %}
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-          <th scope="col">HawkID</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Temperature </th>
-          <th scope="col">FeelingGood</th>
-          <th scope="col">ReportDate</th>
-          <th scope="col">NeedHelp</th>
-          <th scope="col">ContactSickPeople</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for row in members %}
-    <tr>
+<div class="jumbotron text-center">
+    <h1>The University of Iowa COVID-19 Monitoring System</h1>
+	<p class="lead">Iowans, we stand with you</p>
+  <fig><img src="{{ url_for('static', filename='images/wetogether.jpg') }}" width="1000"/></fig>
+  <p><a href="https://www.youtube.com/watch?v=zRwy8gtgJ1A">Python Flask From Scratch series</a></p>
+  <p><a href="https://blog.tecladocode.com/learn-python-defining-user-access-roles-in-flask/"> Defining User Access Levels in Flask</a></p>
+  <p><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins">Flask Mega-Tutorial</a></p>
+    {% if session.logged_in == NULL %}
+      <a href="/register" class="btn btn-primary btn-lg">Register</a>
+      <a href="/login" class="btn btn-success btn-lg">Login</a>
+    {% endif %}
+  </div>
 
-        <td> {{ row.HawkID }}</td>
-        <td> {{ row.first_name }}</td>
-        <td> {{ row.last_name }}</td>
-        <td> {{ row.Temperature  }}</td>
-        <td> {{ row.FeelingGood }}</td>
-        <td> {{ row.ReportDate }}</td>
-        <td> {{ row.NeedHelp }}</td>
-        <td> {{ row.ContactSickPeople }}</td>
-        <td>
-            <form action="{{ url_for('get_member', member_id=row.member_id) }}" method="POST">
-                <button type="submit" class="btn btn-warning">Details</button>
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-
-  </tbody>
-</table>
-{% endif %}
 {% endblock %}

@@ -1,6 +1,9 @@
 #Virtual Environment
 venv/
 
+#Database connection
+secrets.py
+
 # Flask
 instance/*
 !instance/.gitignore
