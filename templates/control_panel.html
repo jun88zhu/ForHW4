@@ -9,13 +9,13 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                
+
                 <th>Name</th>
                 <th>E-mail</th>
                 <th>Username</th>
                 <th>Access Level</th>
                 <th><form action="{{ url_for('new_user') }}" method="GET">
-                  <input type="submit" value="New User" class="btn btn-primary" />
+                  <input type="submit" class="btn btn-dark text-warning bg-dark" value="New User" class="btn btn-dark text-warning bg-dark" />
               </form></th>
             </tr>
         </thead>
@@ -23,11 +23,11 @@
         <tbody>
             {% for row in users %}
             <tr>
-                
+
                 <td> {{ row.name }}</td>
                 <td> {{ row.email }}</td>
                 <td> {{ row.username }}</td>
-                <td> 
+                <td>
                   {% if row.access == 1 %} User
                   {% elif row.access == 2 %} Admin
                   {% else %} --
@@ -36,7 +36,7 @@
                 </td>
                 <td>
                   <form action="{{ url_for('user_detail', user_id=row.id) }}" method="POST">
-                    <input type="submit" value="Details" class="btn btn-outline-primary btn-sm" />
+                    <input type="submit" class="btn btn-dark text-warning bg-dark"value="Details" class="btn btn-outline-primary btn-sm" />
                 </form>
                 </td>
 

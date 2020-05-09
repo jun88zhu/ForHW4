@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block body %}
+<div>
+  <h3> Add a new report</h3>
+  <br>
+  <button button type="button" class="btn btn-dark">
+      <a class="text-warning" href="{{url_for('.database')}}">Back to Database</a></button>
+<form action="" method="POST">
+    {{ form.csrf_token }}
+    <p>
+        <label for='HawkID'>
+       HawkID: <input type="Integer" name='HawkID' id='HawkID' placeholder="Enter your HawkID" autofocus required>
+        </label>
+   </p>
+   <p>
+       <label for='First_name'>
+           First_name: <input type="text" name='First_name' id='First_name' placeholder="Enter your First Name " autofocus required>
+       </label>
+    </p>
+    <p>
+       <label for='Last_name'>
+           Last_name: <input type="text" name='Last_name' id='Last_name' placeholder="Enter your Last Name " required>
+       </label>
+    </p>
+    <p>
+       <label for='TemperatureC'>
+           TemperatureC: <input type="DECIMAL" name='TemperatureC' id='TemperatureC' placeholder="Enter your Temperature in C" required>
+       </label>
+    </p>
+    <p>
+       <label for='FeelingGood'>
+           FeelingGood: <input type="text" name='FeelingGood' id='FeelingGood' placeholder="Yes/No" required>
+       </label>
+    </p>
+    <p>
+       <label for='NeedHelp	'>
+           NeedHelp	: <input type="text" name='NeedHelp	' id='NeedHelp' placeholder="Yes/No" required>
+       </label>
+    </p>
+    <p>
+       <label for='TodayClass'>
+           TodayClass: <input type="text" name='TodayClass' id='TodayClass' placeholder="What is you class today?" required>
+       </label>
+    </p>
+    <p>
+       <label for='ContactSickPeople'>
+           ContactSickPeople: <input type="text" name='ContactSickPeople' id='ContactSickPeople' placeholder="Yes/No" required>
+       </label>
+    </p>
+    <p>
+       <label for='ReportDate'>
+           ReportDate: <input type="Date" name='ReportDate' id='ReportDate' placeholder="YYYY-MM-DD" required>
+       </label>
+    </p>
+
+<input type="submit" value="Add report">
+
+  </form>
+
+
+
+
+    </div>
+    {% endblock %}

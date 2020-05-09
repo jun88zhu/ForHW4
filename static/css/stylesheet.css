@@ -2,3 +2,6 @@ body {
   background-color: lightblue;
 }
 
+tbody tr {
+  display: inline-block;
+}

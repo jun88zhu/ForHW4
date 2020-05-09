@@ -86,18 +86,18 @@ class reportdb(FlaskForm):
 @app.route('/databaseoverview')
 def databaseoverview():
     all_reports=jzhu72_project.query.all()
-    return render_template('databaseoverview.html',reporttable=all_reports,pageTitle='University of Iowa Daily Report',legend="Database Overview")
+    return render_template('databaseoverview.html',reporttable=all_reports,pageTitle='University of Iowa Daily Report')
 
 
-@app.route('/databasemanipulation')
-def databasemanipulation():
+@app.route('/database')
+def database():
     all_reports=jzhu72_project.query.all()
-    return render_template('databasemanipulation.html',reporttable=all_reports,pageTitle='University of Iowa Daily Report',legend="Database Overview")
+    return render_template('database.html',reporttable=all_reports,pageTitle='University of Iowa Daily Report')
 
 @app.route('/reports/<int:InstanceID>',methods=['GET','POST'])
 def get_report(InstanceID):
     reports=jzhu72_project.query.get_or_404(InstanceID)
-    return render_template('databasemanipulationdetail.html',form=reports,pageTitle="reports details", legend='report Details')
+    return render_template('databasedetail.html',form=reports,pageTitle="reports details", legend='report Details')
 
 
 @app.route('/reports/<int:InstanceID>/update', methods=['POST'])
@@ -130,7 +130,7 @@ def update_report(InstanceID):
     form.ReportDate.data=reports.ReportDate
 
 
-    return render_template('databasemanipulationupdate.html',form=form,pageTitle='Update report',legend='Updata a report')
+    return render_template('databaseupdate.html',form=form,pageTitle='Update report',legend='Updata a report')
 
 @app.route('/search',methods=['GET','POST'])
 def search():
@@ -147,7 +147,7 @@ def search():
                                                           jzhu72_project.TodayClass.like(search),
                                                           jzhu72_project.ContactSickPeople.like(search),
                                                           jzhu72_project.ReportDate.like(search))).all()
-            return render_template('databasemanipulation.html',reporttable=results,pageTitle="Sun's report index",legend="Search results")
+            return render_template('database.html',reporttable=results,pageTitle="The University of Iowa Daily Report",legend="Search results")
         else:
             return redirect('/')
 
@@ -168,31 +168,21 @@ def search_overview():
                                                           jzhu72_project.TodayClass.like(search),
                                                           jzhu72_project.ContactSickPeople.like(search),
                                                           jzhu72_project.ReportDate.like(search))).all()
-            return render_template('databaseoverview.html',reporttable=results,pageTitle="Sun's report index",legend="Search results")
+            return render_template('databaseoverview.html',reporttable=results,pageTitle="The University of Iowa Daily Report",legend="Search results")
         else:
             return redirect('/')
 
 
-@app.route('/addpokemon',methods=['GET','POST'])
-def addpokemon():
+@app.route('/addreport',methods=['GET','POST'])
+def addreport():
     form=reportdb()
     if form.validate_on_submit():
         report=jzhu72_project(HawkID=form.HawkID.data,First_name=form.First_name.data,Last_name=form.Last_name.data,TemperatureC=form.TemperatureC.data,
         FeelingGood=form.FeelingGood.data,NeedHelp=form.NeedHelp.data,TodayClass=form.TodayClass.data,ContactSickPeople=form.ContactSickPeople.data,ReportDate=form.ReportDate.data)
         db.session.add(report)
         db.session.commit()
-        return redirect('/databasemanipulation')
-    return render_template('addpokemon.html',form=form,pageTitle='add pokemons')
-
-
-
-
-
-
-
-
-
-
+        return redirect('/database')
+    return render_template('addreport.html',form=form,pageTitle='add report')
 
 
 
@@ -403,11 +393,10 @@ def account():
     form.email.data = user.email
 
     return render_template('account_detail.html', form=form, pageTitle='Your Account')
+@app.route('/guest_page')
+def guest_page():
+    return render_template('guest_page.html', pageTitle='Welcome')
 
-@app.route('/guest_test')
-@requires_access_level(ACCESS['guest'])
-def guest_test():
-    return render_template('guest_page.html', pageTitle='Guest test page')
 
 
 ################ USER ACCESS FUNCTIONALITY OR GREATER ###################
@@ -438,9 +427,9 @@ def delete_report(InstanceID):
         db.session.delete(report)
         db.session.commit()
         flash('User has been deleted.', 'success')
-        return redirect(url_for('databasemanipulation'))
+        return redirect(url_for('database'))
     else:
-        return redirect(url_for('databasemanipulation'))
+        return redirect(url_for('database'))
 
 # control panel
 

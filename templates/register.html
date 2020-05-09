@@ -5,7 +5,7 @@
   {% from "includes/_formhelpers.html" import render_field %}
   <form action="" method="POST">
     {{ form.hidden_tag() }}
-    
+
     <div class="form-group">
         <label>{{ form.name.label }}</label>
         {{ form.name(size=32, class="form-control") }}
@@ -45,7 +45,7 @@
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </div>
-    
-    <p>{{ form.submit(class="btn btn-primary") }}</p>
+
+    <p>{{ form.submit(class="btn btn-dark text-warning bg-dark") }}</p>
   </form>
 {% endblock %}

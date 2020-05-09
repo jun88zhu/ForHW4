@@ -4,7 +4,7 @@
 <h1>Login</h1>
 <form action="" method="POST" novalidate>
   {{ form.hidden_tag() }}
-  
+
   <div class="form-group">
     <label>{{ form.username.label }}</label>
     {{ form.username(size=32, class="form-control") }}
@@ -22,6 +22,6 @@
   </div>
 
   <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-  <p>{{ form.submit(class="btn btn-primary") }}</p>
+  <p>{{ form.submit(class="btn btn-dark text-warning bg-dark") }}</p>
 </form>
 {% endblock %}

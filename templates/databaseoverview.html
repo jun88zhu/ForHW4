@@ -3,13 +3,18 @@
 {% block body %}
 
 <h3>{{legend}}</h3>
-<form class="form-inline my-2 my-lg-0" method="POST">
+<div align='right'>
+  <form class="form-inline my-2 my-lg-0" method="POST">
+  <div align='right'>
     <input class="form-control mr-sm-2" type="search" name="search_string" autofocus placeholder="Search" aria-label="Search">
-    <button class="text-white bg-dark" formaction="/search_overview" type="submit">Search</button>
+    <button class="btn btn-dark text-warning bg-dark"formaction="/search_overview" type="submit">Search</button>
   </form>
-  <br>
+    <br>
+</div>
+    <div align='right'>
     <button type="button" class="btn btn-dark">
-        <a class="text-white bg-dark" href="{{url_for('.databaseoverview')}}">Back to Database</a></button>
+        <a class="btn btn-dark text-warning bg-dark" href="{{url_for('.databaseoverview')}}">Back to Database</a></button>
+    </div>
 
 {% if reporttable %}
 

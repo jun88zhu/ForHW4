@@ -2,8 +2,8 @@
 {% block body %}
 <div>
     <br>
-    <button type="button" class="btn btn-dark">
-        <a class="text-white bg-dark" href="{{url_for('.databasemanipulation')}}">Back to Database</a></button>
+    <button button type="button" class="btn btn-dark">
+        <a class="text-warning bg-dark" href="{{url_for('.database')}}">Back to Database</a></button>
     <br>
     {% if form %}
     <form method='POST' action="">
@@ -21,6 +21,8 @@
                     <th scope="col">TodayClass</th>
                     <th scope="col">ContactSickPeople</th>
                     <th scope="col">ReportDate</th>
+                    <th scope="col"> </th>
+                    <th scope="col"> </th>
             </thead>
             <tbody>
                 <tr>
@@ -34,9 +36,9 @@
                     <td> {{form.TodayClass}} </td>
                     <td> {{form.ContactSickPeople}} </td>
                     <td> {{form.ReportDate}} </td>
-                    <td> <button type="submit" class="btn btn-dark" formaction="{{url_for('update_report',InstanceID=form.InstanceID)}}" value="Update">Update</button>
+                    <td><button type="submit" class="btn btn-dark text-warning bg-dark"  formaction="{{url_for('update_report',InstanceID=form.InstanceID)}}" value="Update">Update</button>
                     </td>
-                    <td><button type="submit" class="btn btn-dark" formaction="{{url_for('delete_report',InstanceID=form.InstanceID)}}" value="Delete">Delete</button>
+                    <td><button type="submit" class="btn btn-dark text-warning bg-dark"  formaction="{{url_for('delete_report',InstanceID=form.InstanceID)}}" value="Delete">Delete</button>
                     </td>
 
                 </tr>

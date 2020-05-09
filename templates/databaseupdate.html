@@ -3,8 +3,8 @@
 <div>
     <h3>{{legend}}</h3>
     <br>
-    <button type="button" class="btn btn-dark">
-        <a class="text-white bg-dark" href="{{url_for('.databasemanipulation')}}">Back to Database</a></button>
+    <button button type="button" class="btn btn-warning">
+        <a class="text-dark" href="{{url_for('.database')}}">Back to Database</a></button>
     <form method='POST' action="">
         <table class="table-responsive">
             <thead>
@@ -37,7 +37,7 @@
                 </tr>
             </tbody>
             </table>
-        <input type="submit" value="Save">
+        <input class="btn btn-dark text-warning bg-dark" type="submit" value="Save">
 
     </form>
 

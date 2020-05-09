@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+<div>
+    <h3> Add a new report</h3>
+    <br>
+        <a class="btn btn-dark text-warning bg-dark" href="{{url_for('.database')}}">Back to Database</a>
+    <form method='POST' action="{{url_for('addreport')}}">
+        <table class="table-responsive">
+            <tbody>
+                <tr>
+                    {{ form.csrf_token }}
+                    <p>HawkID: <input type="Integer" name='HawkID' id='HawkID' placeholder="Enter your HawkID" autofocus required></p>
+                    <p>First_name: <input type="text" name='First_name' id='First_name' placeholder="Enter your First Name " autofocus required></p>
+                    <p>Last_name: <input type="text" name='Last_name' id='Last_name' placeholder="Enter your Last Name " required></p>
+                    <p>TemperatureC: <input type="DECIMAL" name='TemperatureC' id='TemperatureC' placeholder="Enter your Temperature in C" required></p>
+                    <p>FeelingGood: <input type="text" name='FeelingGood' id='FeelingGood' placeholder="Yes/No" required></p>
+                    <p>NeedHelp: <input type="text" name='NeedHelp' id='NeedHelp' placeholder="Yes/No" required></p>
+                    <p>TodayClass: <input type="text" name='TodayClass' id='TodayClass' placeholder="What is you class today?" required></p>
+                    <p>ContactSickPeople: <input type="text" name='ContactSickPeople' id='ContactSickPeople' placeholder="Yes/No" required></p>
+                    <p>ReportDate: <input type="Date" name='ReportDate' id='ReportDate' placeholder="YYYY-MM-DD" required></p>
+                </tr>
+            </tbody>
+            </table>
+
+        <input type="submit" class="btn btn-dark text-warning bg-dark"  value="Add report">
+
+    </form>
+
+
+
+
+</div>
+{% endblock %}
