@@ -393,32 +393,20 @@ def account():
     form.email.data = user.email
 
     return render_template('account_detail.html', form=form, pageTitle='Your Account')
-@app.route('/guest_page')
-def guest_page():
-    return render_template('guest_page.html', pageTitle='Welcome')
+@app.route('/welcome')
+def welcome():
+    return render_template('welcome.html', pageTitle='Welcome')
 
 
 
 ################ USER ACCESS FUNCTIONALITY OR GREATER ###################
 
-# dashboard
-@app.route('/dashboard')
-@requires_access_level(ACCESS['user'])
-def dashboard():
-    return render_template('dashboard.html', pageTitle='My Flask App Dashboard')
-
-@app.route('/user_test')
-@requires_access_level(ACCESS['user'])
-def user_test():
-    return render_template('user_page.html', pageTitle='User test page')
+# Contact_Information
+@app.route('/Contact_Information')
+def Contact_Information():
+    return render_template('Contact_Information.html')
 
 ################ ADMIN ACCESS FUNCTIONALITY ###################
-
-@app.route('/admin_test')
-@requires_access_level(ACCESS['admin'])
-def admin_test():
-    return render_template('admin_page.html', pageTitle='Admin test page')
-
 @app.route('/delete_report/<int:InstanceID>',methods=['POST'])
 @requires_access_level(ACCESS['admin'])
 def delete_report(InstanceID):

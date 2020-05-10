@@ -25,6 +25,9 @@
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 {% if current_user.is_anonymous%}
                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="/Contact_Information">Contact Information</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-dark" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
@@ -44,14 +47,14 @@
 
                 {% if current_user.is_admin() or current_user.is_user() %}
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-dark" href="/databaseoverview">Overview</a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/guest_page">Welcome</a>
+                    <a class="nav-link text-dark" href="/Contact_Information">Contact Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/welcome">Welcome</a>
                 </li>
 
                 <li class="nav-item">

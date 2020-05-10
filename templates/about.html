@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-	<h1>About This Personal report Database</h1>
-	<p>This report database is mainly for Personal Use. It's an online notebook which records the report information that are competitive in Online Tournament</p>
-	<p>If you are passby users, you may only see this page and register page. If you want to see the database infomration,
-		please register for a user account, I and other DB adminstrators will look over your request and upgrade your account in one or two
-		work days. Thank you for your patience~
-
+<div>
+	<h1>The University of Iowa COVID-19 Monitoring System</h1>
+	<fig><img src="{{ url_for('static', filename='images/about.jpg') }}" width="1000"/></fig>
+	 <p><a >#all pictures are from Uiowa webpage</a></p>
+	<h3><p>Why we need this Monitoring System?</p></h3>
+	<p>As we know, due to the impact of the epidemic, the University of Iowa has changed from
+face-to-face classes to virtual classes by the spring of 2020. The impact of the epidemic has
+profoundly affected the normal operation of the university. In the future of college life, we need a
+COVID-19 monitoring system, which can easily know the physical conditions of students and
+teachers, so as to ensure the safety of the people of the University of Iowa and the operation of
+the school.
 	</p>
-
+	<h3><p>How does the Monitoring System work?</p></h3>
+	<p>As a student or professor, all need to report their healthy condions information everyday. Those
+		information include your HawkID, First_name, Last_name, your Temperature in C everyday, FeelingGood or not,
+		NeedHelp or not, TodayClass information, whether you contact with sick people, and the report date.
+		Our employee will monitor those information closely. For people who feeling not good, the
+		system can quickly find out, so that we can have a plan at the first time. Under such
+		circumstances, the safety of students and teachers can be guaranteed. If the school do not start
+		this project and start school in the fall, the professors and students’ physical condition cannot be
+		checked, it is like we are walking in a dark room. Therefore, monitoring the COIV-19 project is
+		very necessary and responsible.
+	</p>
+</div>
 {% endblock %}
