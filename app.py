@@ -11,20 +11,20 @@ from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
 import pymysql
-import secrets
+#import secrets
 import os
 
-#dbuser=os.environ.get('DBUSER')
-#dbpass=os.environ.get('DBPASS')
-#dbhost=os.environ.get('DBHOST')
-#dbname=os.environ.get('DBNAME')
-conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
-#conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(dbuser,dbpass,dbhost,dbname)
+dbuser=os.environ.get('DBUSER')
+dbpass=os.environ.get('DBPASS')
+dbhost=os.environ.get('DBHOST')
+dbname=os.environ.get('DBNAME')
+#conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
+conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(dbuser,dbpass,dbhost,dbname)
 # Open database connection
-dbhost = secrets.dbhost
-dbuser = secrets.dbuser
-dbpass = secrets.dbpass
-dbname = secrets.dbname
+#dbhost = secrets.dbhost
+#dbuser = secrets.dbuser
+#dbpass = secrets.dbpass
+#dbname = secrets.dbname
 
 #db = pymysql.connect(dbhost, dbuser, dbpass, dbname)
 
@@ -329,12 +329,12 @@ def requires_access_level(access_level):
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', pageTitle='Flask App Home Page')
+    return render_template('index.html', pageTitle='Home Page')
 
 # about
 @app.route('/about')
 def about():
-    return render_template('about.html', pageTitle='About My Flask App')
+    return render_template('about.html', pageTitle='About page')
 
 # registration
 @app.route('/register', methods=['GET', 'POST'])
@@ -412,7 +412,7 @@ def welcome():
 # Contact_Information
 @app.route('/Contact_Information')
 def Contact_Information():
-    return render_template('Contact_Information.html')
+    return render_template('Contact_Information.html',pageTitle=' Contact Information')
 
 ################ ADMIN ACCESS FUNCTIONALITY ###################
 @app.route('/delete_report/<int:InstanceID>',methods=['POST'])
@@ -433,7 +433,7 @@ def delete_report(InstanceID):
 @requires_access_level(ACCESS['admin'])
 def control_panel():
     all_users = User.query.all()
-    return render_template('control_panel.html', users=all_users, pageTitle='My Flask App Control Panel')
+    return render_template('control_panel.html', users=all_users, pageTitle='Control Panel')
 
 # user details & update
 @app.route('/user_detail/<int:user_id>', methods=['GET','POST'])
