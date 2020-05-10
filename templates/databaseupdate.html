@@ -18,7 +18,7 @@
                     <th scope="col">NeedHelp</th>
                     <th scope="col">TodayClass</th>
                     <th scope="col">ContactSickPeople</th>
-                    <th scope="col">ReportDate</th>
+                    <th scope="col">ReportDate </th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +33,13 @@
                     <td>{{form.NeedHelp(size=20)}} </td>
                     <td>{{form.TodayClass(size=20)}} </td>
                     <td>{{form.ContactSickPeople(size=20)}} </td>
-                    <td>{{form.ReportDate(size=20)}} </td>
+                    <td>
+                        <label for='ReportDate'>
+
+                           <input type="Date" name='ReportDate' id='ReportDate' placeholder="YYYY-MM-DD" required>
+                           
+                        </label>
+                    </td>
                 </tr>
             </tbody>
             </table>

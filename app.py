@@ -99,6 +99,14 @@ def get_report(InstanceID):
     reports=jzhu72_project.query.get_or_404(InstanceID)
     return render_template('databasedetail.html',form=reports,pageTitle="reports details", legend='report Details')
 
+@app.route('/reports_user/<int:InstanceID>',methods=['GET','POST'])
+def get_report_user(InstanceID):
+    reports_user=jzhu72_project.query.get_or_404(InstanceID)
+    return render_template('userdetail.html',form=reports_user,pageTitle="reports details", legend='report Details')
+
+
+
+
 
 @app.route('/reports/<int:InstanceID>/update', methods=['POST'])
 def update_report(InstanceID):

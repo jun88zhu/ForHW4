@@ -44,6 +44,11 @@
             <td> {{row.TodayClass}}</td>
             <td> {{row.ContactSickPeople}}</td>
             <td> {{row.ReportDate}}</td>
+            <td>
+              <form action="{{url_for('get_report_user',InstanceID=row.InstanceID)}}" method="POST">
+                <button type="submit" class="btn btn-dark text-warning bg-dark">Details</button>
+              </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
